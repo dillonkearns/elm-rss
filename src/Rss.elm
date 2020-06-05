@@ -10,6 +10,7 @@ module Rss exposing (generate, Item, DateOrTime(..))
 import Date
 import Dict
 import Imf.DateTime
+import Path
 import Time
 import Xml
 import Xml.Encode exposing (..)
@@ -101,8 +102,8 @@ itemXml siteUrl item =
           , list
                 ([ keyValue "title" item.title
                  , keyValue "description" item.description
-                 , keyValue "link" (siteUrl ++ item.url)
-                 , keyValue "guid" (siteUrl ++ item.url)
+                 , keyValue "link" (Path.join [ siteUrl, item.url ])
+                 , keyValue "guid" (Path.join [ siteUrl, item.url ])
                  , keyValue "pubDate" (formatDateOrTime item.pubDate)
                  ]
                     ++ ([ item.content |> Maybe.map (\content -> keyValue "content" content)
