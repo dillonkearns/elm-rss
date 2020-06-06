@@ -10,6 +10,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.0.1] - 2020-06-06
+
 ### Fixed
 
 - The `siteUrl`, and entries' `path`s are now correctly joined together with any
