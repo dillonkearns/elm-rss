@@ -125,12 +125,17 @@ itemXml siteUrl item =
                  , keyValue "pubDate" (formatDateOrTime item.pubDate)
                  ]
                     ++ ([ item.content |> Maybe.map (\content -> keyValue "content" content)
+                        , item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (wrapInCdata content))
                         ]
                             |> List.filterMap identity
                        )
                 )
           )
         ]
+
+
+wrapInCdata content =
+    "<![CDATA[" ++ content ++ "]]>"
 
 
 formatDateOrTime : DateOrTime -> String
