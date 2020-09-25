@@ -26,6 +26,7 @@ suite =
                           , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
                           , content = Nothing
                           , contentEncoded = Nothing
+                          , enclosure = Nothing
                           }
                         ]
                     , siteUrl = "https://elm-pages.com"
@@ -64,6 +65,7 @@ suite =
                           , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
                           , content = Nothing
                           , contentEncoded = Just "<h1>Hello!</h1><p>Some feed readers will render this as HTML</p>"
+                          , enclosure = Nothing
                           }
                         ]
                     , siteUrl = "https://elm-pages.com"

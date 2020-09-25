@@ -48,6 +48,10 @@ using `dillonkearns/elm-markdown`](https://github.com/dillonkearns/elm-markdown/
 
 Encoding
 
+enclosure - link to an attached file
+
+<https://www.rssboard.org/rss-enclosures-use-case>
+
 -}
 type alias Item =
     { title : String
@@ -58,13 +62,18 @@ type alias Item =
     , pubDate : DateOrTime
     , content : Maybe String
     , contentEncoded : Maybe String
+    , enclosure :
+        Maybe
+            { url : String
+            , mimeType : Maybe String
+            , bytes : Int
+            }
 
     {-
        TODO consider adding these
           - lat optional number The latitude coordinate of the item.
           - long optional number The longitude coordinate of the item.
           - custom_elements optional array Put additional elements in the item (node-xml syntax)
-          - enclosure optional object An enclosure object
     -}
     }
 
