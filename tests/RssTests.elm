@@ -25,6 +25,7 @@ suite =
                           , author = "Dillon Kearns"
                           , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
                           , content = Nothing
+                          , contentEncoded = Nothing
                           }
                         ]
                     , siteUrl = "https://elm-pages.com"

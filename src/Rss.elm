@@ -31,6 +31,23 @@ type DateOrTime
 
 
 {-| Data representing an RSS feed item.
+
+contentEncoded - Use this to
+[add HTML content](https://developer.mozilla.org/en-US/docs/Archive/RSS/Article/Why_RSS_Content_Module_is_Popular_-_Including_HTML_Contents)
+in a `<content:encoded>` tag in the RSS feed. Some feed readers
+will use this field if present to render HTML. Note that Elm doesn't
+provide a way to turn `Html.Html` values into a `String`.
+
+You can use [`zwilias/elm-html-string`](https://package.elm-lang.org/packages/zwilias/elm-html-string/latest/) to
+render HTML using a drop-in replacement API and then turn that into a String.
+
+Here's an example that shows how to [render to an HTML String
+using `dillonkearns/elm-markdown`](https://github.com/dillonkearns/elm-markdown/blob/2650722990d61c8948d7998168d3bceb0ee6f298/spec-tests/OutputMarkdownHtml.elm).
+
+<https://demo.ghost.io/author/lewis/rss/>
+
+Encoding
+
 -}
 type alias Item =
     { title : String
@@ -40,6 +57,7 @@ type alias Item =
     , author : String
     , pubDate : DateOrTime
     , content : Maybe String
+    , contentEncoded : Maybe String
 
     {-
        TODO consider adding these
