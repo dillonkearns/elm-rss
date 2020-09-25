@@ -65,7 +65,12 @@ suite =
                           , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
                           , content = Nothing
                           , contentEncoded = Just "<h1>Hello!</h1><p>Some feed readers will render this as HTML</p>"
-                          , enclosure = Nothing
+                          , enclosure =
+                                Just
+                                    { url = "https://example.com/image.jpg"
+                                    , mimeType = "image/jpeg"
+                                    , bytes = Nothing
+                                    }
                           }
                         ]
                     , siteUrl = "https://elm-pages.com"
@@ -85,12 +90,14 @@ suite =
 <guid>https://elm-pages.com/blog/generate-files</guid>
 <pubDate>Fri, 05 Jun 2020 04:09:26 +0000</pubDate>
 <content:encoded><![CDATA[<h1>Hello!</h1><p>Some feed readers will render this as HTML</p>]]></content:encoded>
+<enclosure length="0" type="image/jpeg" url="https://example.com/image.jpg"></enclosure>
 </item>
 </channel>
 </rss>"""
         ]
 
 
+equalMultiline : String -> String -> Expectation
 equalMultiline a b =
-    String.lines a
-        |> Expect.equalLists (String.lines b)
+    String.lines b
+        |> Expect.equalLists (String.lines a)

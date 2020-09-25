@@ -1,4 +1,7 @@
-module Rss exposing (generate, Item, DateOrTime(..))
+module Rss exposing
+    ( generate, Item, DateOrTime(..)
+    , Enclosure
+    )
 
 {-| Build a feed following the RSS 2.0 format <https://validator.w3.org/feed/docs/rss2.html>.
 <http://www.rssboard.org/rss-specification>
@@ -65,8 +68,8 @@ type alias Item =
     , enclosure :
         Maybe
             { url : String
-            , mimeType : Maybe String
-            , bytes : Int
+            , mimeType : String
+            , bytes : Maybe Int
             }
 
     {-
@@ -75,6 +78,18 @@ type alias Item =
           - long optional number The longitude coordinate of the item.
           - custom_elements optional array Put additional elements in the item (node-xml syntax)
     -}
+    }
+
+
+{-| Represents a linked file.
+
+<https://validator.w3.org/feed/docs/rss2.html#ltenclosuregtSubelementOfLtitemgt>
+
+-}
+type alias Enclosure =
+    { url : String
+    , mimeType : String
+    , bytes : Maybe Int
     }
 
 
@@ -135,10 +150,27 @@ itemXml siteUrl item =
                  ]
                     ++ ([ item.content |> Maybe.map (\content -> keyValue "content" content)
                         , item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (wrapInCdata content))
+                        , item.enclosure |> Maybe.map encodeEnclosure
+
+                        --<enclosure url="https://example.com/image.jpg" length="0" type="image/jpeg"/>
                         ]
                             |> List.filterMap identity
                        )
                 )
+          )
+        ]
+
+
+encodeEnclosure : Enclosure -> Xml.Value
+encodeEnclosure enclosure =
+    Xml.Encode.object
+        [ ( "enclosure"
+          , Dict.fromList
+                [ ( "url", string enclosure.url )
+                , ( "length", string "0" )
+                , ( "type", string enclosure.mimeType )
+                ]
+          , Xml.Encode.null
           )
         ]
 
