@@ -1,12 +1,9 @@
-module Rss exposing
-    ( generate, Item, DateOrTime(..)
-    , Enclosure
-    )
+module Rss exposing (generate, Item, DateOrTime(..), Enclosure)
 
 {-| Build a feed following the RSS 2.0 format <https://validator.w3.org/feed/docs/rss2.html>.
 <http://www.rssboard.org/rss-specification>
 
-@docs generate, Item, DateOrTime
+@docs generate, Item, DateOrTime, Enclosure
 
 -}
 
