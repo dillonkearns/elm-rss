@@ -10,6 +10,13 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.0.0] - 2020-06-06
+
+### Added
+
+- Support enclosures (embedded files) and
+    `<content:encoded>` tags (useful for embedding rendered HTML strings).
+
 ## [1.0.1] - 2020-06-06
 
 ### Fixed
