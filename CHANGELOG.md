@@ -10,6 +10,12 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.0.1] - 2021-05-12
+
+### Fixed
+
+- Show categories in XML output (https://github.com/dillonkearns/elm-rss/pull/2).
+
 ## [2.0.0] - 2020-06-06
 
 ### Added
