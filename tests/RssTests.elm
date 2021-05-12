@@ -21,7 +21,7 @@ suite =
                         [ { title = "Generating files with elm-pages"
                           , description = "Learn all about the new generateFiles hook."
                           , url = "blog/generate-files"
-                          , categories = []
+                          , categories = [ "Elm", "Static Site Generator" ]
                           , author = "Dillon Kearns"
                           , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
                           , content = Nothing
@@ -45,6 +45,8 @@ suite =
 <link>https://elm-pages.com/blog/generate-files</link>
 <guid>https://elm-pages.com/blog/generate-files</guid>
 <pubDate>Fri, 05 Jun 2020 04:09:26 +0000</pubDate>
+<category>Elm</category>
+<category>Static Site Generator</category>
 </item>
 </channel>
 </rss>"""

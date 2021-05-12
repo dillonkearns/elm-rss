@@ -145,6 +145,7 @@ itemXml siteUrl item =
                  , keyValue "guid" (Path.join [ siteUrl, item.url ])
                  , keyValue "pubDate" (formatDateOrTime item.pubDate)
                  ]
+                    ++ List.map encodeCategory item.categories
                     ++ ([ item.content |> Maybe.map (\content -> keyValue "content" content)
                         , item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (wrapInCdata content))
                         , item.enclosure |> Maybe.map encodeEnclosure
@@ -155,6 +156,13 @@ itemXml siteUrl item =
                        )
                 )
           )
+        ]
+
+
+encodeCategory : String -> Xml.Value
+encodeCategory category =
+    Xml.Encode.object
+        [ ( "category", Dict.empty, Xml.Encode.string category )
         ]
 
 
