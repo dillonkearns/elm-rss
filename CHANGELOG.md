@@ -9,6 +9,11 @@ and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [2.0.2] - 2021-06-04
+
+### Changed
+
+- Updated <https://package.elm-lang.org/packages/billstclair/elm-xml-eeue56/latest> dependency.
 
 ## [2.0.1] - 2021-05-12
 
