@@ -9,6 +9,12 @@ and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [2.0.3] - 2022-09-28
+
+### Changed
+
+- Updated <https://package.elm-lang.org/packages/justinmimbs/date/latest/> dependency.
+
 ## [2.0.2] - 2021-06-04
 
 ### Changed
