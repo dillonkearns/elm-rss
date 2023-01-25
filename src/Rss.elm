@@ -147,7 +147,7 @@ itemXml siteUrl item =
                  ]
                     ++ List.map encodeCategory item.categories
                     ++ ([ item.content |> Maybe.map (\content -> keyValue "content" content)
-                        , item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (wrapInCdata content))
+                        , item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (content))
                         , item.enclosure |> Maybe.map encodeEnclosure
 
                         --<enclosure url="https://example.com/image.jpg" length="0" type="image/jpeg"/>
@@ -178,10 +178,6 @@ encodeEnclosure enclosure =
           , Xml.Encode.null
           )
         ]
-
-
-wrapInCdata content =
-    "<![CDATA[" ++ content ++ "]]>"
 
 
 formatDateOrTime : DateOrTime -> String

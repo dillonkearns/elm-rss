@@ -91,7 +91,7 @@ suite =
 <link>https://elm-pages.com/blog/generate-files</link>
 <guid>https://elm-pages.com/blog/generate-files</guid>
 <pubDate>Fri, 05 Jun 2020 04:09:26 +0000</pubDate>
-<content:encoded><![CDATA[<h1>Hello!</h1><p>Some feed readers will render this as HTML</p>]]></content:encoded>
+<content:encoded>&lt;h1&gt;Hello!&lt;/h1&gt;&lt;p&gt;Some feed readers will render this as HTML&lt;/p&gt;</content:encoded>
 <enclosure length="0" type="image/jpeg" url="https://example.com/image.jpg"></enclosure>
 </item>
 </channel>
