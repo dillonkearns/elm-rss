@@ -60,7 +60,6 @@ type alias Item =
     , categories : List String
     , author : String
     , pubDate : DateOrTime
-    , content : Maybe String
     , contentEncoded : Maybe String
     , enclosure :
         Maybe
@@ -146,8 +145,7 @@ itemXml siteUrl item =
                  , keyValue "pubDate" (formatDateOrTime item.pubDate)
                  ]
                     ++ List.map encodeCategory item.categories
-                    ++ ([ item.content |> Maybe.map (\content -> keyValue "content" content)
-                        , item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (content))
+                    ++ ([ item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (content))
                         , item.enclosure |> Maybe.map encodeEnclosure
 
                         --<enclosure url="https://example.com/image.jpg" length="0" type="image/jpeg"/>

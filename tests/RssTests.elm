@@ -24,7 +24,6 @@ suite =
                           , categories = [ "Elm", "Static Site Generator" ]
                           , author = "Dillon Kearns"
                           , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
-                          , content = Nothing
                           , contentEncoded = Nothing
                           , enclosure = Nothing
                           }
@@ -65,8 +64,8 @@ suite =
                           , categories = []
                           , author = "Dillon Kearns"
                           , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
-                          , content = Nothing
                           , contentEncoded = Just "<h1>Hello!</h1><p>Some feed readers will render this as HTML</p>"
+                          
                           , enclosure =
                                 Just
                                     { url = "https://example.com/image.jpg"
