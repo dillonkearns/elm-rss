@@ -9,6 +9,14 @@ and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [2.0.4] - 2024-04-02
+
+### Fixed
+
+- Bump minimum dependency of [`dmy/elm-imf-date-time`](https://package.elm-lang.org/packages/dmy/elm-imf-date-time) to 1.0.2 to remove dependency on
+  renamed package (see https://github.com/dmy/elm-imf-date-time/pull/1).
+
+
 ## [2.0.3] - 2022-09-28
 
 ### Changed
