@@ -10,7 +10,7 @@ and this project adheres to
 
 ## [Unreleased]
 
-## [2.0.5] - 2024-06-18
+## [2.0.5] - 2025-06-18
 
 ### Fixed
 
