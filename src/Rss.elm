@@ -179,7 +179,6 @@ encodeEnclosure enclosure =
         ]
 
 
-
 formatDateOrTime : DateOrTime -> String
 formatDateOrTime dateOrTime =
     case dateOrTime of
