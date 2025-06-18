@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 13
+      - name: Use Node.js 20
         uses: actions/setup-node@v1
         with:
-          node-version: 13
+          node-version: 20
       - uses: actions/cache@v4
         with:
           path: ~/.npm
@@ -38,10 +38,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 13
+      - name: Use Node.js 20
         uses: actions/setup-node@v1
         with:
-          node-version: 13
+          node-version: 20
       - uses: actions/cache@v4
         with:
           path: ~/.npm
@@ -63,10 +63,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 13
+      - name: Use Node.js 20
         uses: actions/setup-node@v1
         with:
-          node-version: 13
+          node-version: 20
       - uses: actions/cache@v4
         with:
           path: ~/.npm
@@ -89,10 +89,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 13
+      - name: Use Node.js 20
         uses: actions/setup-node@v1
         with:
-          node-version: 13
+          node-version: 20
       - uses: actions/cache@v4
         with:
           path: ~/.npm
