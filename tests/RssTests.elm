@@ -96,6 +96,38 @@ suite =
 </item>
 </channel>
 </rss>"""
+        , test "CDATA sections should not be HTML-encoded" <|
+            \() ->
+                Rss.generate
+                    { title = "Test Feed"
+                    , description = "Testing CDATA encoding"
+                    , url = "https://example.com/feed"
+                    , lastBuildTime = Time.millisToPosix 1591330166000
+                    , generator = Just "elm-pages"
+                    , items =
+                        [ { title = "Test Item"
+                          , description = "Testing CDATA"
+                          , url = "test-item"
+                          , categories = []
+                          , author = "Test Author"
+                          , pubDate = Rss.DateTime (Time.millisToPosix 1591330166000)
+                          , content = Nothing
+                          , contentEncoded = Just "<div>Simple HTML content</div>"
+                          , enclosure = Nothing
+                          }
+                        ]
+                    , siteUrl = "https://example.com"
+                    }
+                    |> (\feedXml ->
+                            -- The CDATA section should be raw XML, not HTML-encoded
+                            -- This test checks that we don't see &lt;![CDATA[...]]&gt;
+                            if String.contains "&lt;![CDATA[" feedXml || String.contains "]]&gt;" feedXml then
+                                Expect.fail ("CDATA sections are being HTML-encoded. Found encoded CDATA markers in:\n" ++ feedXml)
+                            else if String.contains "<content:encoded><![CDATA[<div>Simple HTML content</div>]]></content:encoded>" feedXml then
+                                Expect.pass
+                            else
+                                Expect.fail ("Expected to find proper CDATA section but got:\n" ++ feedXml)
+                       )
         ]
 
 

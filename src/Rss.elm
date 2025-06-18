@@ -12,7 +12,6 @@ import Dict
 import Imf.DateTime
 import Path
 import Time
-import Xml
 import Xml.Encode exposing (..)
 
 
@@ -130,10 +129,10 @@ generate feed =
                 ]
           )
         ]
-        |> Xml.Encode.encode 0
+        |> encode 0
 
 
-itemXml : String -> Item -> Xml.Value
+itemXml : String -> Item -> Value
 itemXml siteUrl item =
     object
         [ ( "item"
@@ -147,7 +146,7 @@ itemXml siteUrl item =
                  ]
                     ++ List.map encodeCategory item.categories
                     ++ ([ item.content |> Maybe.map (\content -> keyValue "content" content)
-                        , item.contentEncoded |> Maybe.map (\content -> keyValue "content:encoded" (wrapInCdata content))
+                        , item.contentEncoded |> Maybe.map (\content -> object [ ( "content:encoded", Dict.empty, cdata content ) ])
                         , item.enclosure |> Maybe.map encodeEnclosure
 
                         --<enclosure url="https://example.com/image.jpg" length="0" type="image/jpeg"/>
@@ -159,29 +158,26 @@ itemXml siteUrl item =
         ]
 
 
-encodeCategory : String -> Xml.Value
+encodeCategory : String -> Value
 encodeCategory category =
-    Xml.Encode.object
-        [ ( "category", Dict.empty, Xml.Encode.string category )
+    object
+        [ ( "category", Dict.empty, string category )
         ]
 
 
-encodeEnclosure : Enclosure -> Xml.Value
+encodeEnclosure : Enclosure -> Value
 encodeEnclosure enclosure =
-    Xml.Encode.object
+    object
         [ ( "enclosure"
           , Dict.fromList
                 [ ( "url", string enclosure.url )
                 , ( "length", string "0" )
                 , ( "type", string enclosure.mimeType )
                 ]
-          , Xml.Encode.null
+          , null
           )
         ]
 
-
-wrapInCdata content =
-    "<![CDATA[" ++ content ++ "]]>"
 
 
 formatDateOrTime : DateOrTime -> String
@@ -200,6 +196,6 @@ formatDate date =
         ++ " 00:00:00 GMT"
 
 
-keyValue : String -> String -> Xml.Value
+keyValue : String -> String -> Value
 keyValue key value =
     object [ ( key, Dict.empty, string value ) ]
