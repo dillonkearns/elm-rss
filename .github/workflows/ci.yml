@@ -18,13 +18,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 13
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         id: elm-cache
         with:
           path: ~/.elm
@@ -42,13 +42,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 13
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         id: elm-cache
         with:
           path: ~/.elm
@@ -67,13 +67,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 13
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         id: elm-cache
         with:
           path: ~/.elm
@@ -93,13 +93,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 13
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         id: elm-cache
         with:
           path: ~/.elm
