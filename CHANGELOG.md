@@ -9,6 +9,17 @@ and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.0.5] - 2024-06-18
+
+### Fixed
+
+- Fixed bug where `content:encoded` CDATA sections were incorrectly HTML-escaped, causing RSS feeds with HTML content to be malformed. The library now properly generates unescaped CDATA sections.
+
+### Changed
+
+- Switched from `billstclair/elm-xml-eeue56` to `dillonkearns/elm-xml-encode` for XML generation with proper CDATA support.
+
 ## [2.0.4] - 2024-04-02
 
 ### Fixed
